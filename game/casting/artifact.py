@@ -9,10 +9,12 @@ class Artifact(Actor):
 
     Attributes:
         _message (string): A short description about the artifact.
+        _score
     """
     def __init__(self):
         super().__init__()
         self._message = ""
+        self._score = 0
         
     def get_message(self):
         """Gets the artifact's message.
@@ -29,3 +31,12 @@ class Artifact(Actor):
             message (string): The given message.
         """
         self._message = message
+
+    def update_score(self, text):
+        if text == '*':
+            self._score = self._score + 1
+        if text == 'O':
+            self._score = self._score - 1
+
+    def get_score(self):
+        return self._score
