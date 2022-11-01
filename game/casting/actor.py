@@ -23,6 +23,7 @@ class Actor:
         self._color = Color(255, 255, 255)
         self._position = Point(0, 0)
         self._velocity = Point(0, 0)
+        #self._score = 0
 
     def get_color(self):
         """Gets the actor's color as a tuple of three ints (r, g, b).
@@ -115,3 +116,5 @@ class Actor:
             velocity (Point): The given velocity.
         """
         self._velocity = velocity
+    
+    
