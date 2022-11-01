@@ -66,10 +66,10 @@ class Director:
                 message = artifact.get_message()
                 banner.set_text(message)
                 # update score
-                #robot.update_score(artifact.get_text())
-                text = '*'
-                score.update_score(text)
-                score.set_text(str(score.get_score()))
+                score.update_score(artifact.get_text())
+                #text = '*'
+                #score.update_score(text)
+                score.set_text('SCORE ' + str(score.get_score()))
 
         
     def _do_outputs(self, cast):
