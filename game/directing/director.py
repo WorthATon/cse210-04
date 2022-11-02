@@ -48,12 +48,12 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        banner = cast.get_first_actor("banners")
+        #banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
         score = cast.get_first_actor("scores")
 
-        banner.set_text("")
+        #banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
@@ -63,10 +63,11 @@ class Director:
             artifact.move_next(max_x, max_y) # move artifacts
             if robot.get_position().equals(artifact.get_position()):
             #if abs(robot.get_position().get_y() - artifact.get_position().get_y()) <= 15:
-                message = artifact.get_message()
-                banner.set_text(message)
+                #message = artifact.get_message()
+                #banner.set_text(message)
                 # update score
                 score.update_score(artifact.get_text())
+                artifacts.remove(artifact)
                 #text = '*'
                 #score.update_score(text)
                 score.set_text('SCORE ' + str(score.get_score()))

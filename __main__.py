@@ -4,6 +4,8 @@ import random
 from game.casting.actor import Actor
 from game.casting.artifact import Artifact
 from game.casting.cast import Cast
+from game.casting.gem import Gem
+from game.casting.rock import Rock
 
 from game.directing.director import Director
 
@@ -21,7 +23,7 @@ CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Robot Finds Kitten"
+CAPTION = "Greed Game"
 #DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
@@ -33,16 +35,16 @@ def main():
     cast = Cast()
     
     # create the banner
-    banner = Actor()
-    banner.set_text("")
-    banner.set_font_size(FONT_SIZE)
-    banner.set_color(WHITE)
-    banner.set_position(Point(CELL_SIZE, 0))
-    cast.add_actor("banners", banner)
+    #banner = Actor()
+    #banner.set_text("")
+    #banner.set_font_size(FONT_SIZE)
+    #banner.set_color(WHITE)
+    #banner.set_position(Point(CELL_SIZE, 0))
+    #cast.add_actor("banners", banner)
     
     # create the robot
     x = int(MAX_X / 2)
-    y = MAX_Y - FONT_SIZE #int(MAX_Y / 2) at the bottom line
+    y = MAX_Y - FONT_SIZE #int(MAX_Y / 2) place robot at the bottom line
     position = Point(x, y)
 
     robot = Actor()
@@ -59,11 +61,12 @@ def main():
 
     for n in range(DEFAULT_ARTIFACTS):
         #text = chr(random.randint(33, 126))
-        text = random.choice(['*','O'])
+        artifact_type = random.choice([0,1])
+        #text = random.choice(['*','O'])
         #message = messages[n]
 
         x = random.randint(1, COLS - 1)
-        y = random.randint(1, ROWS - 1)
+        y = random.randint(1, ROWS - 1) 
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
 
@@ -72,8 +75,12 @@ def main():
         b = random.randint(0, 255)
         color = Color(r, g, b)
         
-        artifact = Artifact()
-        artifact.set_text(text)
+        if artifact_type == 1:
+            artifact = Gem()
+        else:
+            artifact = Rock()
+
+        #artifact.set_text(text)
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
