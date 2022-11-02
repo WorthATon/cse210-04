@@ -4,6 +4,8 @@ import random
 from game.casting.actor import Actor
 from game.casting.artifact import Artifact
 from game.casting.cast import Cast
+from game.casting.gem import Gem
+from game.casting.rock import Rock
 
 from game.directing.director import Director
 
